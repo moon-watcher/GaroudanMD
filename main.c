@@ -7,10 +7,16 @@
 # include <genesis.h>
 
 void show_info();
+void show_intro();
 
 int main () {
 
 	show_info();
+
+	/* Game loop start here */
+	while (TRUE) {
+		show_intro();
+	}
 
 	return 0;
 
