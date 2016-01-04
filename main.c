@@ -8,6 +8,7 @@
 
 void show_info();
 void show_intro();
+void show_pstart();
 
 int main () {
 
@@ -16,6 +17,7 @@ int main () {
 	/* Game loop start here */
 	while (TRUE) {
 		show_intro();
+		show_pstart();
 	}
 
 	return 0;

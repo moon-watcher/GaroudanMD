@@ -5,3 +5,6 @@ TILESET font "font.png" -1
 PALETTE palfont "font.png"
 SPRITE introsprites "intro/introspr.bmp" 7 5 -1 0 NONE
 PALETTE palintrospr "intro/paletintrospr.bmp"
+IMAGE backstart "pstart/background.bmp" -1
+SPRITE titlestart "pstart/title.bmp" 28 10 -1 0 NONE
+PALETTE titlepal "pstart/titlepal.bmp"

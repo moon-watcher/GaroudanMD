@@ -86,7 +86,7 @@ void show_intro() {
 	
 	}
 
-	waitMs(99999); /* Waiting */
+	SPR_clear(); /* Cleaning sprites */
 
 }
 
