@@ -12,12 +12,15 @@ void show_pstart();
 
 int main () {
 
+	/* TODO: Moving to another place? */
+	u32 highscore = 5000;
+
 	show_info();
 
 	/* Game loop start here */
 	while (TRUE) {
 		show_intro();
-		show_pstart();
+		show_pstart(highscore); /* Should return new high-score */
 	}
 
 	return 0;
