@@ -24,7 +24,7 @@ void show_info() {
         VDP_drawText("ORIGINAL GAME",12,9);
         VDP_drawText("(c)2013 LOCOMALITO & GRYZOR87",5,11);
         VDP_drawText("MEGADRIVE VERSION",10,15); /* The poor guy who write this game to Megadrive */
-        VDP_drawText("2015 Nevat",14,17); /* I hope to end this game in 2016 :) */
+        VDP_drawText("2015 NEVAT",14,17); /* I hope to end this game in 2016 :) */
 
         waitMs(9000); /* More waiting */
 

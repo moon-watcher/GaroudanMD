@@ -11,6 +11,9 @@ void show_pstart(u32 highscore) {
 	char highstr[5];
 	u16 offpstart = 0;
 	u16 countoff = 0;
+	u16 startpressed = 0;
+	u16 limit = 59;
+	u16 repeatimes = 0;
 
 	Sprite titlespr[1]; /* Title sprite */
 
@@ -42,19 +45,34 @@ void show_pstart(u32 highscore) {
 		VDP_setHorizontalScroll(PLAN_B,mov); /* Moving background */
 
 		/* Blinking "press start" text. Remember in old HTML days, the Blinking tag ? >:D */
-		if (countoff < 59)
+		if (countoff < limit)
 			countoff ++;
 		else {
 			countoff = 0; /* Reset counter */
 			VDP_drawTextBG(APLAN,"PRESS START",TILE_ATTR(PAL2,FALSE,FALSE,FALSE),14,18); /* Show text */
+			if (startpressed == 1)
+				repeatimes ++;
 		}
 		if (countoff == offpstart)
 			VDP_clearTextLine(18); /* Hide text */
 
 		SPR_update(titlespr,1); /* Update sprite */
 
+		if (JOY_readJoypad(JOY_1) & BUTTON_START) { /* Press start pressed */
+			if (startpressed == 0) {
+				startpressed = 1; /* Flag on */
+				offpstart = 5;
+				limit = 10;
+			}
+		}
+
 		VDP_waitVSync(); /* Vsync */
 
+		if (repeatimes > 99999)
+			exit = 1;
+
 	}
+
+	SPR_clear(); /* Cleaning sprites */
 
 }
