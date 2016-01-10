@@ -14,13 +14,18 @@ void show_pstart(u32 highscore) {
 	u16 startpressed = 0;
 	u16 limit = 59;
 	u16 repeatimes = 0;
+	u16 rptimes = 0;
 
 	Sprite titlespr[1]; /* Title sprite */
 
-	if (IS_PALSYSTEM) /* It's a PAL system, 50 Hz */
+	if (IS_PALSYSTEM) { /* It's a PAL system, 50 Hz */
 		offpstart = 25; /* 0.5 seconds */
-	else
+		rptimes = 200; /* 4 seconds blinking */
+	}
+	else {
 		offpstart = 30; /* 0.5 seconds */
+		rptimes = 240; /* 4 seconds blinking */
+	}
 
 	VDP_clearPlan (APLAN,0); /* Cleaning plan A & B */
 	VDP_clearPlan (BPLAN,0);
@@ -50,11 +55,13 @@ void show_pstart(u32 highscore) {
 		else {
 			countoff = 0; /* Reset counter */
 			VDP_drawTextBG(APLAN,"PRESS START",TILE_ATTR(PAL2,FALSE,FALSE,FALSE),14,18); /* Show text */
-			if (startpressed == 1)
+			if (startpressed == 1) 
 				repeatimes ++;
 		}
-		if (countoff == offpstart)
+		if (countoff == offpstart) 
 			VDP_clearTextLine(18); /* Hide text */
+
+		SPR_nextFrame(&titlespr[0]); /* Updating sprite */
 
 		SPR_update(titlespr,1); /* Update sprite */
 
@@ -68,7 +75,7 @@ void show_pstart(u32 highscore) {
 
 		VDP_waitVSync(); /* Vsync */
 
-		if (repeatimes > 99999)
+		if (repeatimes > rptimes)
 			exit = 1;
 
 	}

@@ -8,7 +8,8 @@
 
 void show_info();
 void show_intro();
-void show_pstart();
+void show_pstart(u32 highscore);
+void selectmode(u32 highscore);
 
 int main () {
 
@@ -20,7 +21,8 @@ int main () {
 	/* Game loop start here */
 	while (TRUE) {
 		show_intro();
-		show_pstart(highscore); /* Should return new high-score */
+		show_pstart(highscore); 
+		selectmode(highscore);
 	}
 
 	return 0;
